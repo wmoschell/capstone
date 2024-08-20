@@ -1,0 +1,276 @@
+/* Base Styles */
+body {
+  font-family: 'Karla', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: var(--secondary-dark-grey);
+  background-color: var(--secondary-light-grey); /* Light grey background */
+  display: grid;
+  grid-template-rows: auto auto auto auto auto auto;
+  gap: 20px; /* Adjust the gap between sections */
+}
+
+/* Colors */
+:root {
+  --primary-green: #495e57;
+  --primary-yellow: #f4ce14;
+  --secondary-salmon: #ee9972;
+  --secondary-light-salmon: #fbdabb;
+  --secondary-light-grey: #edefee;
+  --secondary-dark-grey: #333333;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Markazi Text', serif;
+  color: var(--primary-green);
+}
+
+h1 {
+  font-size: 64px;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 40px;
+  font-weight: 400;
+}
+
+h3.section-title {
+  font-size: 20px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--primary-green);
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  max-width: 65ch;
+}
+
+/* Lead Text */
+.lead-text {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--secondary-dark-grey);
+}
+
+/* Highlight Text (e.g., Prices) */
+.highlight-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--primary-yellow);
+}
+
+/* Header Styles */
+header {
+  background-color: #ffffff;
+  padding: 20px 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+/* Logo */
+header img {
+  height: 50px; /* Adjust as per your logo size */
+}
+
+/* Navigation */
+header nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+header nav ul {
+  display: flex;
+  flex-direction: row; /* Ensure items are displayed horizontally */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 20px; /* Space between the menu items */
+}
+
+header nav ul li {
+  margin: 0;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: var(--secondary-dark-grey);
+  font-size: 18px;
+  font-weight: bold;
+}
+
+header nav ul li a:hover {
+  color: var(--primary-yellow);
+}
+
+/* Hero Section */
+.hero {
+  background-color: var(--primary-green);
+  color: var(--primary-yellow);
+  padding: 60px 70px;
+  text-align: left;
+}
+
+.hero h1 {
+  font-size: 64px;
+}
+
+.hero p {
+  font-size: 18px;
+}
+
+/* Card Section */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px 70px;
+  background-color: var(--secondary-light-grey);
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.card h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card p {
+  font-size: 16px;
+  color: var(--secondary-dark-grey);
+}
+
+.card .highlight-text {
+  color: var(--primary-yellow);
+}
+
+/* Footer */
+footer {
+  background-color: var(--primary-green);
+  color: #ffffff;
+  padding: 40px 70px;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 20px;
+  align-items: start; /* Align all items at the top */
+  justify-items: start; /* Align items to the start of the grid cells */
+  margin-bottom: 40px;
+}
+
+/* Footer Logo */
+.footer-logo img {
+  height: 50px; /* Adjust the logo height */
+}
+
+/* Footer Links */
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.footer-links ul li a:hover {
+  color: var(--primary-yellow);
+}
+
+/* Footer Contact */
+.footer-contact h4 {
+  font-size: 20px;
+  margin: 0 0 10px 0; /* Ensure no top margin and consistent spacing below */
+  color: #ffffff; /* Ensure the text is white */
+}
+
+.footer-contact p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+/* Footer Social (Grey Boxes) */
+.footer-social {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-social .social-box {
+  width: 40px;
+  height: 40px;
+  background-color: grey;
+  display: inline-block;
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  
+}
+
+
+
+
+/* Responsive Grid Layout */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Mobile default (4 columns) */
+  grid-gap: 20px; /* Gutter width */
+  margin-left: 20px; /* Mobile margin */
+  margin-right: 20px; /* Mobile margin */
+}
+
+/* Tablet layout (min-width: 768px) */
+@media screen and (min-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(8, 1fr); /* 8 columns for tablet */
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+}
+
+/* Desktop layout (min-width: 1024px) */
+@media screen and (min-width: 1024px) {
+  .grid-container {
+    grid-template-columns: repeat(12, 1fr); /* 12 columns for desktop */
+    margin-left: 70px;
+    margin-right: 70px;
+  }
+}
+
+/* Buttons */
+button {
+  background-color: var(--primary-yellow);
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  font-family: 'Karla', sans-serif;
+}
+
+button:hover {
+  background-color: #e2b810;
+}
