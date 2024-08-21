@@ -111,48 +111,286 @@ header nav ul li a:hover {
 
 /* Hero Section */
 .hero {
-  background-color: var(--primary-green);
-  color: var(--primary-yellow);
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns: one for text, one for image */
+  align-items: center;
   padding: 60px 70px;
-  text-align: left;
+  background-color: var(--primary-green); /* Dark green background */
+  color: var(--primary-yellow); /* Yellow text color */
+}
+
+.hero-content {
+  max-width: 500px; /* Limit the width of the content for better alignment */
 }
 
 .hero h1 {
   font-size: 64px;
+  font-family: 'Markazi Text', serif;
+  font-weight: 500;
+  margin-bottom: 0px;
+  color: #e2b810;
+}
+
+.hero h2 {
+  font-size: 40px;
+  font-family: 'Markazi Text', serif;
+  font-weight: 400;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  color: #ffffff; /* White color for the subheading */
 }
 
 .hero p {
   font-size: 18px;
+  font-family: 'Karla', sans-serif;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  color: #ffffff; /* White color for the paragraph */
 }
 
-/* Card Section */
-.card-container {
+.hero button {
+  background-color: var(--primary-yellow);
+  color: #ffffff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-family: 'Karla', sans-serif;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.hero button:hover {
+  background-color: #e2b810; /* Darker yellow on hover */
+}
+
+.hero-image img {
+  width: 100%;
+  max-height: 400px; /* Set a maximum height of 400px */
+  object-fit: cover; /* Ensures the image covers the container while maintaining aspect ratio */
+  border-radius: 10px; /* Rounded corners for the image */
+}
+
+@media screen and (max-width: 1024px) {
+  .hero {
+    grid-template-columns: 1fr; /* Stack content and image on smaller screens */
+    text-align: center;
+  }
+
+  .hero-content, .hero-image {
+    margin: 0 auto;
+  }
+
+  .hero-image img {
+    max-width: 80%; /* Limit image width on smaller screens */
+  }
+}
+
+/* Specials Section */
+.specials {
+  padding: 60px 70px;
+}
+
+.specials-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.specials-header h2 {
+  font-size: 40px;
+  color: var(--secondary-dark-grey);
+}
+
+.specials-header button {
+  background-color: var(--primary-yellow);
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.specials-header button:hover {
+  background-color: #e2b810;
+}
+
+.specials-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  padding: 20px 70px;
-  background-color: var(--secondary-light-grey);
 }
+
+/* Testimonials Section */
+.testimonials {
+  background-color: var(--secondary-light-salmon); /* Light salmon background */
+  padding: 60px 70px;
+}
+
+.testimonials h2 {
+  font-family: 'Markazi Text', serif;
+  font-size: 40px;
+  font-weight: 500;
+  color: var(--secondary-dark-grey);
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+/* Testimonial Grid */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 20px;
+}
+
+/* Testimonial Card */
+.testimonial-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: left;
+}
+
+.rating {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: var(--secondary-dark-grey); /* Dark grey for rating stars */
+}
+
+.testimonial-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--secondary-dark-grey);
+  margin-bottom: 10px;
+}
+
+.testimonial-body {
+  font-size: 16px;
+  color: var(--secondary-dark-grey);
+  margin-bottom: 20px;
+}
+
+/* Reviewer Info */
+.reviewer-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reviewer-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.reviewer-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--secondary-dark-grey);
+}
+
+.review-date {
+  font-size: 14px;
+  color: #a9a9a9; /* Light grey for the date */
+}
+
+/* About Section */
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns for content and image */
+  align-items: center;
+  padding: 60px 70px;
+  background-color: var(--secondary-light-grey); /* Light grey background */
+}
+
+.about-content {
+  max-width: 500px; /* Limit the width of the content for better alignment */
+}
+
+.about h1 {
+  font-size: 64px;
+  font-family: 'Markazi Text', serif;
+  font-weight: 500;
+  margin-bottom: 0px;
+  color: var(--secondary-dark-grey); /* Dark grey color for the heading */
+}
+
+.about h2 {
+  font-size: 40px;
+  font-family: 'Markazi Text', serif;
+  font-weight: 400;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  color: var(--secondary-dark-grey); /* Dark grey color for the subheading */
+}
+
+.about p {
+  font-size: 18px;
+  font-family: 'Karla', sans-serif;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  color: var(--secondary-dark-grey); /* Dark grey color for the paragraph */
+}
+
+.about-image img {
+  width: 100%;
+  max-height: 400px; /* Set a maximum height for the image */
+  object-fit: cover; /* Ensures the image covers the container while maintaining aspect ratio */
+  border-radius: 10px; /* Rounded corners for the image */
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 1024px) {
+  .about {
+    grid-template-columns: 1fr; /* Stack content and image on smaller screens */
+    text-align: center;
+  }
+
+  .about-content, .about-image {
+    margin: 0 auto;
+  }
+
+  .about-image img {
+    max-width: 80%; /* Limit image width on smaller screens */
+  }
+}
+
+
 
 .card {
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+  max-height: 200px;
+  object-fit: cover;
 }
 
 .card h3 {
   font-size: 18px;
   font-weight: bold;
+  margin: 15px 0;
+}
+
+.card .highlight-text {
+  color: var(--secondary-salmon);
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
 .card p {
   font-size: 16px;
   color: var(--secondary-dark-grey);
-}
-
-.card .highlight-text {
-  color: var(--primary-yellow);
 }
 
 /* Footer */
@@ -226,11 +464,7 @@ footer {
 .footer-bottom {
   text-align: center;
   padding-top: 20px;
-  
 }
-
-
-
 
 /* Responsive Grid Layout */
 .grid-container {
