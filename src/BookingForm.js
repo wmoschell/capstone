@@ -9,7 +9,7 @@ function BookingForm({ submitForm }) {
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState('Birthday');
   const [formErrors, setFormErrors] = useState({});
-  const [isFormValid, setIsFormValid] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false); // Track if the form has been submitted
 
   const navigate = useNavigate();
 
@@ -37,7 +37,7 @@ function BookingForm({ submitForm }) {
     }
 
     setFormErrors(errors);
-    setIsFormValid(Object.keys(errors).length === 0);
+    return Object.keys(errors).length === 0; // Return true if no errors
   };
 
   // Handle form field changes
@@ -47,13 +47,13 @@ function BookingForm({ submitForm }) {
     if (id === 'res-time') setTime(value);
     if (id === 'guests') setGuests(Number(value));
     if (id === 'occasion') setOccasion(value);
-
-    validateForm();
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!isFormValid) return;
+    setIsSubmitted(true); // Mark the form as submitted
+
+    if (!validateForm()) return;
 
     const formData = {
       date,
@@ -61,8 +61,8 @@ function BookingForm({ submitForm }) {
       guests,
       occasion,
     };
-    const isSubmitted = submitForm(formData);
-    if (isSubmitted) {
+    const isSubmittedSuccessfully = submitForm(formData);
+    if (isSubmittedSuccessfully) {
       navigate('/booking-confirmed');
     }
   };
@@ -77,9 +77,9 @@ function BookingForm({ submitForm }) {
         onChange={handleInputChange}
         required
         aria-required="true"
-        aria-invalid={!!formErrors.date}
+        aria-invalid={!!formErrors.date && isSubmitted}
       />
-      {formErrors.date && <p className="error" aria-live="assertive">{formErrors.date}</p>}
+      {formErrors.date && isSubmitted && <p className="error" aria-live="assertive">{formErrors.date}</p>}
 
       <label htmlFor="res-time">Choose time</label>
       <select
@@ -88,13 +88,13 @@ function BookingForm({ submitForm }) {
         onChange={handleInputChange}
         required
         aria-required="true"
-        aria-invalid={!!formErrors.time}
+        aria-invalid={!!formErrors.time && isSubmitted}
       >
         {availableTimes.map((time) => (
           <option key={time} value={time}>{time}</option>
         ))}
       </select>
-      {formErrors.time && <p className="error" aria-live="assertive">{formErrors.time}</p>}
+      {formErrors.time && isSubmitted && <p className="error" aria-live="assertive">{formErrors.time}</p>}
 
       <label htmlFor="guests">Number of guests</label>
       <input
@@ -106,9 +106,9 @@ function BookingForm({ submitForm }) {
         onChange={handleInputChange}
         required
         aria-required="true"
-        aria-invalid={!!formErrors.guests}
+        aria-invalid={!!formErrors.guests && isSubmitted}
       />
-      {formErrors.guests && <p className="error" aria-live="assertive">{formErrors.guests}</p>}
+      {formErrors.guests && isSubmitted && <p className="error" aria-live="assertive">{formErrors.guests}</p>}
 
       <label htmlFor="occasion">Occasion</label>
       <select
@@ -117,14 +117,14 @@ function BookingForm({ submitForm }) {
         onChange={handleInputChange}
         required
         aria-required="true"
-        aria-invalid={!!formErrors.occasion}
+        aria-invalid={!!formErrors.occasion && isSubmitted}
       >
         <option value="Birthday">Birthday</option>
         <option value="Anniversary">Anniversary</option>
       </select>
-      {formErrors.occasion && <p className="error" aria-live="assertive">{formErrors.occasion}</p>}
+      {formErrors.occasion && isSubmitted && <p className="error" aria-live="assertive">{formErrors.occasion}</p>}
 
-      <button type="submit" className="hero-button" disabled={!isFormValid} aria-disabled={!isFormValid}>
+      <button type="submit" className="hero-button" disabled={Object.keys(formErrors).length !== 0} aria-disabled={Object.keys(formErrors).length !== 0}>
         Make Your Reservation
       </button>
     </form>
