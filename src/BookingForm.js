@@ -1,17 +1,31 @@
-import { useState } from 'react';
-
+import { useState, useEffect } from 'react';
+import { fetchAPI, submitAPI } from './api'; // Importing the functions
 
 function BookingForm() {
   const [date, setDate] = useState('');
+  const [availableTimes, setAvailableTimes] = useState([]);
   const [time, setTime] = useState('17:00');
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState('Birthday');
 
-  const availableTimes = ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
+  useEffect(() => {
+    if (date) {
+      const times = fetchAPI(new Date(date));
+      setAvailableTimes(times);
+    }
+  }, [date]); // Fetch available times whenever the date changes
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Reservation confirmed for ${guests} guests on ${date} at ${time} for ${occasion}`);
+    const formData = {
+      date,
+      time,
+      guests,
+      occasion
+    };
+    if (submitAPI(formData)) {
+      alert(`Reservation confirmed for ${guests} guests on ${date} at ${time} for ${occasion}`);
+    }
   };
 
   return (
