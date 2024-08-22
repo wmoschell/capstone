@@ -508,3 +508,17 @@ button {
 button:hover {
   background-color: #e2b810;
 }
+
+/* Margin and max-width for the booking and confirmation pages */
+.page-container {
+  margin: 0 auto;
+  padding: 60px 70px;
+  max-width: 1000px; /* Adjust this as needed */
+}
+
+@media screen and (max-width: 768px) {
+  .page-container {
+    padding: 40px 20px;
+  }
+}
+

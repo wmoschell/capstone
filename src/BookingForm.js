@@ -1,20 +1,25 @@
 import { useState, useEffect } from 'react';
-import { fetchAPI, submitAPI } from './api'; // Importing the functions
+import { fetchAPI } from './api'; // Only need fetchAPI here
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
-function BookingForm() {
+function BookingForm({ submitForm }) { // Accept submitForm as a prop
   const [date, setDate] = useState('');
   const [availableTimes, setAvailableTimes] = useState([]);
   const [time, setTime] = useState('17:00');
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState('Birthday');
 
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  // Fetch available times when the date changes
   useEffect(() => {
     if (date) {
       const times = fetchAPI(new Date(date));
       setAvailableTimes(times);
     }
-  }, [date]); // Fetch available times whenever the date changes
+  }, [date]);
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = {
@@ -23,8 +28,10 @@ function BookingForm() {
       guests,
       occasion
     };
-    if (submitAPI(formData)) {
-      alert(`Reservation confirmed for ${guests} guests on ${date} at ${time} for ${occasion}`);
+    // Call submitForm and navigate if successful
+    const isSubmitted = submitForm(formData);
+    if (isSubmitted) {
+      navigate('/booking-confirmed'); // Navigate to the confirmation page
     }
   };
 
@@ -73,7 +80,10 @@ function BookingForm() {
         <option value="Anniversary">Anniversary</option>
       </select>
 
-      <input type="submit" value="Make Your reservation" />
+      {/* Apply the button class here */}
+      <button type="submit" className="hero-button">
+        Make Your Reservation
+      </button>
     </form>
   );
 }

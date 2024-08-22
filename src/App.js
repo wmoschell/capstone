@@ -4,6 +4,7 @@ import Nav from './Nav';
 import Main from './Main';
 import About from './About'; // If you plan to have a separate about page
 import BookingPage from './BookingPage'; // Placeholder component for booking
+import ConfirmedBooking from './ConfirmedBooking'; // Import the ConfirmedBooking component
 import Footer from './Footer'; // Keep Footer
 import './styles.css';
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/menu" element={<Main />} /> {/* Placeholder */}
         <Route path="/contact" element={<Main />} /> {/* Placeholder */}
         <Route path="/booking" element={<BookingPage />} />
+        <Route path="/booking-confirmed" element={<ConfirmedBooking />} /> {/* Add the confirmation route */}
       </Routes>
       <Footer />
     </Router>
