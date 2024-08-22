@@ -68,7 +68,7 @@ function BookingForm({ submitForm }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'grid', maxWidth: '200px', gap: '20px' }}>
+    <form onSubmit={handleSubmit} style={{ display: 'grid', maxWidth: '200px', gap: '20px' }} aria-label="Reservation form">
       <label htmlFor="res-date">Choose date</label>
       <input
         type="date"
@@ -76,8 +76,10 @@ function BookingForm({ submitForm }) {
         value={date}
         onChange={handleInputChange}
         required
+        aria-required="true"
+        aria-invalid={!!formErrors.date}
       />
-      {formErrors.date && <p className="error">{formErrors.date}</p>}
+      {formErrors.date && <p className="error" aria-live="assertive">{formErrors.date}</p>}
 
       <label htmlFor="res-time">Choose time</label>
       <select
@@ -85,12 +87,14 @@ function BookingForm({ submitForm }) {
         value={time}
         onChange={handleInputChange}
         required
+        aria-required="true"
+        aria-invalid={!!formErrors.time}
       >
         {availableTimes.map((time) => (
           <option key={time} value={time}>{time}</option>
         ))}
       </select>
-      {formErrors.time && <p className="error">{formErrors.time}</p>}
+      {formErrors.time && <p className="error" aria-live="assertive">{formErrors.time}</p>}
 
       <label htmlFor="guests">Number of guests</label>
       <input
@@ -101,8 +105,10 @@ function BookingForm({ submitForm }) {
         value={guests}
         onChange={handleInputChange}
         required
+        aria-required="true"
+        aria-invalid={!!formErrors.guests}
       />
-      {formErrors.guests && <p className="error">{formErrors.guests}</p>}
+      {formErrors.guests && <p className="error" aria-live="assertive">{formErrors.guests}</p>}
 
       <label htmlFor="occasion">Occasion</label>
       <select
@@ -110,13 +116,15 @@ function BookingForm({ submitForm }) {
         value={occasion}
         onChange={handleInputChange}
         required
+        aria-required="true"
+        aria-invalid={!!formErrors.occasion}
       >
         <option value="Birthday">Birthday</option>
         <option value="Anniversary">Anniversary</option>
       </select>
-      {formErrors.occasion && <p className="error">{formErrors.occasion}</p>}
+      {formErrors.occasion && <p className="error" aria-live="assertive">{formErrors.occasion}</p>}
 
-      <button type="submit" className="hero-button" disabled={!isFormValid}>
+      <button type="submit" className="hero-button" disabled={!isFormValid} aria-disabled={!isFormValid}>
         Make Your Reservation
       </button>
     </form>
