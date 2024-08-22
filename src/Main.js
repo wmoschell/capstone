@@ -7,12 +7,12 @@ import BookingForm from './BookingForm';
 import { submitAPI } from './api'; // Import the submitAPI function
 
 // Function to initialize times (called once during reducer initialization)
-function initializeTimes() {
+export function initializeTimes() {
   return ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00']; // Set default available times
 }
 
 // Reducer function to update times based on the selected date
-function updateTimes(state, action) {
+export function updateTimes(state, action) {
   if (action.type === 'UPDATE_TIMES') {
     return ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
   }
