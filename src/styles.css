@@ -150,7 +150,7 @@ header nav ul li a:hover {
 
 .hero button {
   background-color: var(--primary-yellow);
-  color: #ffffff;
+  color: #333333;
   padding: 15px 30px;
   border: none;
   border-radius: 5px;
@@ -205,7 +205,7 @@ header nav ul li a:hover {
 
 .specials-header button {
   background-color: var(--primary-yellow);
-  color: #ffffff;
+  color: #333333;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -496,7 +496,7 @@ footer {
 /* Buttons */
 button {
   background-color: var(--primary-yellow);
-  color: #ffffff;
+  color: #333333;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
